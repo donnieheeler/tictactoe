@@ -1,4 +1,4 @@
-Tic Tac Toe
+### Tic Tac Toe
 A C++ Tic Tac Toe Game
 
 5/24 11:57:
