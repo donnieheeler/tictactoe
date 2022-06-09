@@ -1,5 +1,6 @@
 #include <iostream>
 #include <random>
+#include <fstream>
 
 using namespace std;
 
@@ -17,6 +18,17 @@ string xoro = "X";
 
 bool retry;
 
+bool draw = false;
+
+int drawThreshold = 0;
+
+int firstMove;
+
+bool firstMoveTF;
+
+int t3Results[9];
+
+
 // Display Function: Displays T3 Table
 
 void display() {
@@ -30,6 +42,7 @@ void display() {
 
 void validate();
 void winCheck();
+void saveFirstMove();
 
 // Chooses a random number 0 - 8
 void choice() {
@@ -54,6 +67,7 @@ void set() {
 	t3Table[computerChoice] = xoro;
 	xoroSwitch();
 	winCheck();
+	saveFirstMove();
 }
 
 
@@ -109,6 +123,38 @@ void winCheck() {
 
 }
 
+// Checks to see if a draw has occured. Adds +1 to drawThreshold for ever X or O. Sets draw to true once 9 has been reached.
+void drawCheck() {
+	for (int i=0; i < 9; i++){
+		if((t3Table[i] == "X") || (t3Table[i] == "0")){
+			if(drawThreshold == 9){
+				draw = true;
+				break;		
+	}	
+			drawThreshold == drawThreshold + 1;
+	}
+	}	
+}
+
+//"Resets" the t3Table array by setting all array elements to E(mpty)
+void resetT3(){
+	for(int i=0; i < 9; i++){
+		t3Table[i] = "E";
+	}
+}
+
+void record(){
+	ofstream results("results");	
+	results << firstMove;
+	results.close();
+}
+
+void saveFirstMove(){
+	if(firstMoveTF == true){
+		firstMove = computerChoice;
+		firstMoveTF = false;
+	}
+}
 
 int main() {
 	//choice();	
