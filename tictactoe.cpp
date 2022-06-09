@@ -28,9 +28,10 @@ void display() {
 	cout << t3Table[6] << " | " << t3Table[7] << " | " << t3Table[8] << "\n";
 }
 
+void validate();
+void winCheck();
 
 // Chooses a random number 0 - 8
-
 void choice() {
 	std::random_device rd;
 	std::mt19937 gen (rd());
@@ -52,6 +53,7 @@ void xoroSwitch() {
 void set() {
 	t3Table[computerChoice] = xoro;
 	xoroSwitch();
+	winCheck();
 }
 
 
@@ -64,4 +66,51 @@ void validate() {
 	choice();
 	}
 	}
+}
+
+// Checks to see if any wins have happened, out of 8 possibilities
+void winCheck() {
+// 012,036,048
+	if(t3Table[0] == xoro){
+		if((t3Table[1, 2]) == xoro){
+		winState = true;
+		}
+		if((t3Table[3, 6]) == xoro){
+		winState = true;
+		}
+		if((t3Table[4, 8]) == xoro){
+		winState = true;
+		}
+	}
+
+//147
+	if(t3Table[1,4,7] == xoro){
+	winState = true;
+	}
+//258
+	if(t3Table[2,5,8] == xoro){
+	winState = true;
+	}
+//345
+	if(t3Table[3,4,5] == xoro){
+	winState = true;
+	}
+
+//642,678
+	if(t3Table[6] == xoro){
+		if((t3Table[4, 2]) == xoro){
+		winState = true;
+		}
+		if((t3Table[7, 8]) == xoro){
+		winState = true;
+		}
+
+	}	
+
+}
+
+
+int main() {
+	//choice();	
+return 0;
 }
