@@ -104,7 +104,7 @@ void choice() {
 
                 computerChoice = distr(gen);
                 
-                cout << "\n" << "Choice: "<< computerChoice << xoro <<" ? "<<"\n";
+                //cout << "\n" << "Choice: "<< computerChoice << xoro <<" ? "<<"\n";
 
                 validate();
 
@@ -134,6 +134,7 @@ void set() {
                 saveFirstMove();
                 cout << "Set:  "<< computerChoice << xoro <<" ! "<<"\n";
                 t3Table[computerChoice] = xoro;
+                display();
                 drawCheck();
                 winCheck();
                 xoroSwitch();
@@ -157,7 +158,7 @@ void validate() {
                 set();
 
                 }else{
-                cout << "#########Retry############";
+                //cout << "#########Retry############";
                 choice();
 
                 }
@@ -321,7 +322,6 @@ int main() {
                 while(winAmount > 0){
                 if (winState == false){
                 choice();
-                display();
                 }
                 if (winState == true){
                 cout << "WIN!" << "\n";
