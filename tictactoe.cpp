@@ -106,7 +106,7 @@ void choice() {
                 computerChoice = distr(gen);
                 
                 //cout << "\n" << "Choice: "<< computerChoice << xoro <<" ? "<<"\n";
-
+                drawCheck();
                 validate();
 
 }
@@ -133,7 +133,6 @@ void xoroSwitch() {
 
 void set() {
                 saveFirstMove();
-                drawCheck();
                 cout << "Set:  "<< computerChoice << xoro <<" ! "<<"\n";
                 t3Table[computerChoice] = xoro;
                 display();
