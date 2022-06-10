@@ -14,7 +14,7 @@ using namespace std;
 
  
 
-string t3Table[9] = {"E","E","E","E","E","E","E","E","E"}; //Tic Tac Toe Table
+string t3Table[9] = {"_","_","_","_","_","_","_","_","_"}; //Tic Tac Toe Table
 
  
 
@@ -88,6 +88,8 @@ void winCheck();
 
 void saveFirstMove();
 
+void drawCheck();
+
  
 
 // Chooses a random number 0 - 8
@@ -102,7 +104,7 @@ void choice() {
 
                 computerChoice = distr(gen);
                 
-                cout << "\n" << " ( "<< (computerChoice + 1) << xoro <<" ) "<<"\n\n";
+                cout << "\n" << "Choice: "<< computerChoice << xoro <<" ? "<<"\n";
 
                 validate();
 
@@ -115,13 +117,11 @@ void choice() {
 void xoroSwitch() {
 
                 if(xoro == "X"){
-
                 xoro = "O";
-
-                }else{
-
+                }
+                
+                else if(xoro == "O"){
                 xoro = "X";
-
                 }                             
 
 }
@@ -132,12 +132,11 @@ void xoroSwitch() {
 
 void set() {
                 saveFirstMove();
+                cout << "Set:  "<< computerChoice << xoro <<" ! "<<"\n";
                 t3Table[computerChoice] = xoro;
-                xoroSwitch();
-
-               
+                drawCheck();
                 winCheck();
-
+                xoroSwitch();
                 
 
 }
@@ -149,6 +148,7 @@ void set() {
 // Validates the computers choice
 
 void validate() {
+                cout << "Chosen Position Status: " << t3Table[computerChoice] <<"\n";
                 if(t3Table[computerChoice] != "O"){
 
                 if(t3Table[computerChoice] != "X"){
@@ -157,7 +157,7 @@ void validate() {
                 set();
 
                 }else{
-
+                cout << "#########Retry############";
                 choice();
 
                 }
@@ -179,19 +179,20 @@ void winCheck() {
                                 if((t3Table[1] == xoro) && (t3Table[1] == t3Table[2])){
 
                                 winState = true;
+                                cout << "012" << "\n";
 
                                 }
 
                                 if((t3Table[3] == xoro) && (t3Table[3] == t3Table[6])){
 
                                 winState = true;
-
+                                cout << "036" << "\n";
                                 }
 
                                 if((t3Table[4] == xoro) && (t3Table[4] == t3Table[8])){
 
                                 winState = true;
-
+                                cout << "048" << "\n";
                                 }
 
                 }
@@ -203,7 +204,7 @@ void winCheck() {
                 if((t3Table[1] == xoro) && (t3Table[4] == t3Table[7]) && (t3Table[4] == t3Table[1])){
 
                 winState = true;
-
+                cout << "147" << "\n";
                 }
 
 
@@ -213,13 +214,13 @@ void winCheck() {
                                 if((t3Table[2] == xoro) && (t3Table[2] == t3Table[8])){
 
                                 winState = true;
-
+                                cout << "528" << "\n";
                                 }
 
                                 if((t3Table[4] == xoro) && (t3Table[4] == t3Table[3])){
 
                                 winState = true;
-
+                                cout << "543" << "\n";
                                 }
 
                 }
@@ -231,13 +232,13 @@ void winCheck() {
                                 if((t3Table[4] == xoro) && (t3Table[4] == t3Table[2])){
 
                                 winState = true;
-
+                                cout << "642" << "\n";
                                 }
 
                                 if((t3Table[7] == xoro) && (t3Table[7] == t3Table[8])){
 
                                 winState = true;
-
+                                cout << "678" << "\n";
                                 }
 
  
@@ -252,19 +253,18 @@ void winCheck() {
 
 void drawCheck() {
 
-                for (int i=0; i < 9; i++){
+                for (int i=0; i < 8; i++){
 
                                 if((t3Table[i] == "X") || (t3Table[i] == "0")){
 
-                                                if(drawThreshold == 9){
+                                                if(drawThreshold == 8){
 
                                                                 draw = true;
-
                                                                 break;                  
 
                 }             
 
-                                                drawThreshold == drawThreshold + 1;
+                                                drawThreshold = drawThreshold + 1;
 
                 }
 
@@ -280,7 +280,7 @@ void resetT3(){
 
                 for(int i=0; i < 9; i++){
 
-                                t3Table[i] = "E";
+                                t3Table[i] = "_";
 
                 }
 
@@ -316,7 +316,7 @@ int main() {
                 int winAmount;
                 cout << "Type a number of games to record: "; // Type a number and press enter
                 cin >> winAmount; // Get user input from the keyboard
-                cout << "Your number is: " << winAmount << "\n"; // Display the input value
+                //cout << "Your number is: " << winAmount << "\n"; // Display the input value
                 
                 while(winAmount > 0){
                 if (winState == false){
@@ -324,7 +324,8 @@ int main() {
                 display();
                 }
                 if (winState == true){
-                cout << "WIN!" << "\n"; 
+                cout << "WIN!" << "\n";
+                //display();
                 resetT3();
                 firstMoveTF = false;
                 winAmount = winAmount - 1;
