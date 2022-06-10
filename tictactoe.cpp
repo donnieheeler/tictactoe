@@ -176,19 +176,19 @@ void winCheck() {
 
                 if(t3Table[0] == xoro){
 
-                                if((t3Table[1, 2]) == xoro){
+                                if((t3Table[1] == xoro) && (t3Table[1] == t3Table[2])){
 
                                 winState = true;
 
                                 }
 
-                                if((t3Table[3, 6]) == xoro){
+                                if((t3Table[3] == xoro) && (t3Table[3] == t3Table[6])){
 
                                 winState = true;
 
                                 }
 
-                                if((t3Table[4, 8]) == xoro){
+                                if((t3Table[4] == xoro) && (t3Table[4] == t3Table[8])){
 
                                 winState = true;
 
@@ -200,41 +200,41 @@ void winCheck() {
 
 //147
 
-                if(t3Table[1,4,7] == xoro){
+                if((t3Table[1] == xoro) && (t3Table[4] == t3Table[7]) && (t3Table[4] == t3Table[1])){
 
                 winState = true;
 
                 }
 
-//258
 
-                if(t3Table[2,5,8] == xoro){
+//528,543
+                if(t3Table[5] == xoro){
 
-                winState = true;
-
-                }
-
-//345
-
-                if(t3Table[3,4,5] == xoro){
-
-                winState = true;
-
-                }
-
- 
-
-//642,678
-
-                if(t3Table[6] == xoro){
-
-                                if((t3Table[4, 2]) == xoro){
+                                if((t3Table[2] == xoro) && (t3Table[2] == t3Table[8])){
 
                                 winState = true;
 
                                 }
 
-                                if((t3Table[7, 8]) == xoro){
+                                if((t3Table[4] == xoro) && (t3Table[4] == t3Table[3])){
+
+                                winState = true;
+
+                                }
+
+                }
+
+//642,678
+
+                if(t3Table[6] == xoro){
+
+                                if((t3Table[4] == xoro) && (t3Table[4] == t3Table[2])){
+
+                                winState = true;
+
+                                }
+
+                                if((t3Table[7] == xoro) && (t3Table[7] == t3Table[8])){
 
                                 winState = true;
 
@@ -328,6 +328,7 @@ int main() {
                 resetT3();
                 firstMoveTF = false;
                 winAmount = winAmount - 1;
+                winState = false;
                 }
                 
                 //display();              
