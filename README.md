@@ -11,9 +11,9 @@ Have turned this into a different project all together. Now I am working on havi
 Really excited about the last upload. It finally worked. The first game it played that I was able to understand is, 5x5o2o4x8o6x
 
 E | O | E
-_________
+-----
 X | X | X
-_________
+-----
 E | O | E
 WIN!
 
