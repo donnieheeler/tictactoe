@@ -15,6 +15,7 @@ E | O | E
 X | X | X
 
 E | O | E
+
 WIN!
 
 What a beautiful game!
