@@ -76,7 +76,7 @@ void display() {
 
                 cout << "_________\n";
 
-                cout << t3Table[6] << " | " << t3Table[7] << " | " << t3Table[8] << "\n";
+                cout << t3Table[6] << " | " << t3Table[7] << " | " << t3Table[8] << "\n\n";
 
 }
 
@@ -90,8 +90,9 @@ void saveFirstMove();
 
 void drawCheck();
 
- 
+void resetT3();
 
+int winAmount;
 // Chooses a random number 0 - 8
 
 void choice() {
@@ -132,10 +133,10 @@ void xoroSwitch() {
 
 void set() {
                 saveFirstMove();
+                drawCheck();
                 cout << "Set:  "<< computerChoice << xoro <<" ! "<<"\n";
                 t3Table[computerChoice] = xoro;
                 display();
-                drawCheck();
                 winCheck();
                 xoroSwitch();
                 
@@ -154,11 +155,10 @@ void validate() {
 
                 if(t3Table[computerChoice] != "X"){
                 
-
                 set();
 
                 }else{
-                //cout << "#########Retry############";
+                //cout << "#########Retry#########";
                 choice();
 
                 }
@@ -246,7 +246,7 @@ void winCheck() {
 
                 }             
 
- 
+        
 
 }
 
@@ -255,22 +255,28 @@ void winCheck() {
 void drawCheck() {
 
                 for (int i=0; i < 8; i++){
-
-                                if((t3Table[i] == "X") || (t3Table[i] == "0")){
-
+                                if(t3Table[i] != "_"){
+                                                drawThreshold = drawThreshold + 1;
+                                                cout << "dT: " << drawThreshold << "\n";
+                                                
                                                 if(drawThreshold == 8){
-
                                                                 draw = true;
                                                                 break;                  
+                                                }
+                                                if(draw == true){
+                                                    cout << "DRAW!" << "\n";
+                                                    resetT3();
+                                                    firstMoveTF = false;
+                                                    winAmount = winAmount - 1;
+                                                    draw = false;
+                                                }
 
-                }             
 
-                                                drawThreshold = drawThreshold + 1;
+                                            }
 
-                }
-
-                }             
-
+                         }
+                         drawThreshold = 0;
+    
 }
 
  
@@ -279,7 +285,7 @@ void drawCheck() {
 
 void resetT3(){
 
-                for(int i=0; i < 9; i++){
+                for(int i=0; i < 8; i++){
 
                                 t3Table[i] = "_";
 
@@ -331,7 +337,13 @@ int main() {
                 winAmount = winAmount - 1;
                 winState = false;
                 }
-                
+                if (draw == true){
+                cout << "DRAW!" << "\n";
+                resetT3();
+                firstMoveTF = false;
+                winAmount = winAmount - 1;
+                draw = false;
+                }
                 //display();              
                 
                 
