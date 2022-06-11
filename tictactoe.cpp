@@ -180,7 +180,6 @@ void winCheck() {
 
                                 winState = true;
                                 cout << "012" << "\n";
-
                                 }
 
                                 if((t3Table[3] == xoro) && (t3Table[3] == t3Table[6])){
@@ -293,17 +292,17 @@ void resetT3(){
 }
 
  
-
+/*
 void record(){
 
                 ofstream results("results");        
 
-                results << firstMove;
+                results << winType;
 
                 results.close();
 
 }
-
+*/
  
 
 void saveFirstMove(){
@@ -346,7 +345,7 @@ int main() {
                 //display();              
                 
                 
-                record();
+               //record();
                 }
 return 0;
 
